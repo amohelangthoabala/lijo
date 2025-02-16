@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
             // generate default users
             UserSeeder::class,
 
+            // generate default restaurants
+            RestaurantSeeder::class,
+
             // generate admin user
             AdminSeeder::class,
 
@@ -35,6 +38,9 @@ class DatabaseSeeder extends Seeder
 
             // generate variants
             VariantSeeder::class,
+
+            // generate restaurant employees
+            RestaurantEmployeeSeeder::class,
         ]);
     }
 }

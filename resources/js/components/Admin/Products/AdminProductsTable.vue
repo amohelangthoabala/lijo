@@ -70,6 +70,12 @@ const getById = async (id: number) => {
             </div>
           </div>
         </td>
+
+        <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
+          {{ item.restaurant?.name ?? 'No Restaurant' }}
+          <!-- {{ item.restaurant.name }} -->
+        </td>
+
         <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
           <div class="inline-flex space-x-5">
             <JBadge

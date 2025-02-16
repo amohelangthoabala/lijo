@@ -99,6 +99,8 @@ const toggleCreate = () => {
     <!-- Table -->
     <AdminProductsTable :products="products" />
 
+    <pre>{{ products }}</pre>
+
     <!-- Slide over -->
     <AdminProductsSlideOver :state="formState.show" />
   </main>

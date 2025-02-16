@@ -13,6 +13,7 @@ export interface Product {
   updatedAt?: string
 
   // relationships
+  restaurant?: any
   variants?: Array<Variant>
   categories?: Array<Category>
 }

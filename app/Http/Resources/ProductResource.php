@@ -21,6 +21,7 @@ class ProductResource extends JsonResource
             'image' => $this->image,
 
             // relationships
+            'restaurant' => new RestaurantResource($this->whenLoaded('restaurant')),
             'variants' => VariantResource::collection($this->whenLoaded('variants')),
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
         ];

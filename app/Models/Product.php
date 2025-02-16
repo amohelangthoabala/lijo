@@ -7,6 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -25,6 +26,7 @@ class Product extends Model implements HasMedia
         'name',
         'description',
         'status',
+        'restaurant_id',
     ];
 
     protected $appends = [
@@ -36,33 +38,33 @@ class Product extends Model implements HasMedia
         return $this->getFirstMediaUrl('image', 'thumb') ?: 'https://robohash.org/'.$this->id.'?set=set1&bgset=bg2&size=600x600';
     }
 
-  public function registerMediaCollections(): void
-  {
-      $this->addMediaCollection('image')
-            ->singleFile();
-  }
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('image')
+              ->singleFile();
+    }
 
-  public function registerMediaConversions(Media $media = null): void
-  {
-      $this->addMediaConversion('image')
-            ->width(600)
-            ->height(600);
-  }
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('image')
+              ->width(600)
+              ->height(600);
+    }
 
     public function variants(): HasMany
     {
         return $this->hasMany(Variant::class);
     }
 
-  public function categories(): BelongsToMany
-  {
-      return $this->belongsToMany(Category::class);
-  }
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
 
-  public function orderVariants(): HasMany
-  {
-      return $this->hasMany(OrderVariant::class);
-  }
+    public function orderVariants(): HasMany
+    {
+        return $this->hasMany(OrderVariant::class);
+    }
 
     public function scopeSearch($query, $search): object
     {
@@ -70,8 +72,13 @@ class Product extends Model implements HasMedia
         ->orWhere('description', 'ilike', "%{$search}%"));
     }
 
-  public function scopeAvailable($query): object
-  {
-      return $query->where('status', 'active');
-  }
+    public function scopeAvailable($query): object
+    {
+        return $query->where('status', 'active');
+    }
+
+    public function restaurant(): BelongsTo
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
 }

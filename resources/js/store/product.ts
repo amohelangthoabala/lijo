@@ -48,6 +48,10 @@ export const useProductStore = defineStore('product', () => {
       },
     },
     {
+      text: 'Restaurant',
+      value: 'restaurant',
+    },
+    {
       text: 'Categories',
       value: 'categories',
     },

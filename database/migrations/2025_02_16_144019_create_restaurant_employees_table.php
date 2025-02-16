@@ -7,19 +7,16 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
-    public function up(): void
+    public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('restaurant_employees', function (Blueprint $table) {
             $table->uuid('id')->primary();
-
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->string('description')->nullable();
-            $table->string('status')->default('active');
             $table->foreignUuid('restaurant_id')->constrained('restaurants')->onDelete('cascade');
-
-            $table->softDeletes();
+            $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade');
+            // $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 };
