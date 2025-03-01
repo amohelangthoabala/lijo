@@ -22,8 +22,8 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'Contact us', href: 'contact-us' },
-    { name: 'About', href: 'about' },
+    { name: 'Restaurants', href: 'restaurants.index' },
+    // { name: 'About', href: 'about' },
   ],
 }
 

@@ -37,6 +37,7 @@ declare module '@vue/runtime-core' {
     AppProfileMenu: typeof import('./components/App/AppProfileMenu.vue')['default']
     AppProfileMenuItem: typeof import('./components/App/AppProfileMenuItem.vue')['default']
     AppProfileMenuItems: typeof import('./components/App/AppProfileMenuItems.vue')['default']
+    AppRestaurantCard: typeof import('./components/App/AppRestaurantCard.vue')['default']
     BrandicoFacebookRect: typeof import('~icons/brandico/facebook-rect')['default']
     Chart: typeof import('highcharts-vue')['Chart']
     ChartBar: typeof import('./components/Chart/ChartBar.vue')['default']

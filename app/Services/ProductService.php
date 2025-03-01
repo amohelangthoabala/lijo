@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
+use App\Models\Restaurant;
 use App\Services\Interfaces\ProductServiceInterface;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -36,11 +37,14 @@ class ProductService implements ProductServiceInterface
     {
         try {
             \DB::transaction(function () use ($request) {
+                $randomRestaurant = Restaurant::inRandomOrder()->first();
+
                 $product = Product::create(
                     [
                         'name' => $request->name,
                         'description' => $request->description,
                         'status' => $request->status,
+                        'restaurant_id' => $randomRestaurant->id ?? null, // Ensure a fallback
                     ]
                 );
 

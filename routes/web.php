@@ -11,6 +11,7 @@ require __DIR__.'/auth/index.php';
 require __DIR__.'/public/index.php';
 require __DIR__.'/public/category.php';
 require __DIR__.'/public/product.php';
+require __DIR__.'/public/restaurant.php';
 
 // customer routes
 Route::middleware(['auth', 'customer'])->group(function () {
